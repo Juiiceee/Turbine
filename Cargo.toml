@@ -1,0 +1,12 @@
+[package]
+name = "Turbin3_Rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bs58 = "0.5.1"
+solana-sdk = "1.15.2"
+solana-client = "1.15.2"
+solana-program = "1.15.2"
+borsh = "1.5.3"
+solana-idlgen = { git = "https://github.com/deanmlittle/idlgen" }
