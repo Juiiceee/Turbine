@@ -1,139 +1,87 @@
 use solana_idlgen::idlgen;
 idlgen!({
-	"address": "ADcaide4vBtKuyZQqdU689YqEGZMCmS4tL35bdTv9wJa",
-	"metadata": {
-	  "name": "turbine_prereq",
-	  "version": "0.1.0",
-	  "spec": "0.1.0",
-	  "description": "Created with Anchor"
-	},
-	"instructions": [
-	  {
-		"name": "complete",
-		"discriminator": [
-		  0,
-		  77,
-		  224,
-		  147,
-		  136,
-		  25,
-		  88,
-		  76
+		"version": "0.1.0",
+		"name": "Turbin3_prereq",
+		"metadata": {
+			"address": "ADcaide4vBtKuyZQqdU689YqEGZMCmS4tL35bdTv9wJa"
+		},
+		"instructions": [
+		  {
+			"name": "complete",
+			"accounts": [
+			  {
+				"name": "signer",
+				"isMut": true,
+				"isSigner": true
+			  },
+			  {
+				"name": "prereq",
+				"isMut": true,
+				"isSigner": false
+			  },
+			  {
+				"name": "systemProgram",
+				"isMut": false,
+				"isSigner": false
+			  }
+			],
+			"args": [
+			  {
+				"name": "github",
+				"type": "bytes"
+			  }
+			]
+		  },
+		  {
+			"name": "update",
+			"accounts": [
+			  {
+				"name": "signer",
+				"isMut": true,
+				"isSigner": true
+			  },
+			  {
+				"name": "prereq",
+				"isMut": true,
+				"isSigner": false
+			  },
+			  {
+				"name": "systemProgram",
+				"isMut": false,
+				"isSigner": false
+			  }
+			],
+			"args": [
+			  {
+				"name": "github",
+				"type": "bytes"
+			  }
+			]
+		  }
 		],
 		"accounts": [
 		  {
-			"name": "signer",
-			"writable": true,
-			"signer": true
-		  },
-		  {
-			"name": "prereq",
-			"writable": true,
-			"pda": {
-			  "seeds": [
+			"name": "PrereqAccount",
+			"type": {
+			  "kind": "struct",
+			  "fields": [
 				{
-				  "kind": "const",
-				  "value": [
-					112,
-					114,
-					101,
-					114,
-					101,
-					113
-				  ]
+				  "name": "github",
+				  "type": "bytes"
 				},
 				{
-				  "kind": "account",
-				  "path": "signer"
+				  "name": "key",
+				  "type": "publicKey"
 				}
 			  ]
 			}
-		  },
-		  {
-			"name": "system_program",
-			"address": "11111111111111111111111111111111"
 		  }
 		],
-		"args": [
+		"errors": [
 		  {
-			"name": "github",
-			"type": "bytes"
+			"code": 6000,
+			"name": "InvalidGithubAccount",
+			"msg": "Invalid Github account"
 		  }
 		]
-	  },
-	  {
-		"name": "update",
-		"discriminator": [
-		  219,
-		  200,
-		  88,
-		  176,
-		  158,
-		  63,
-		  253,
-		  127
-		],
-		"accounts": [
-		  {
-			"name": "signer",
-			"writable": true,
-			"signer": true
-		  },
-		  {
-			"name": "prereq",
-			"writable": true
-		  },
-		  {
-			"name": "system_program",
-			"address": "11111111111111111111111111111111"
-		  }
-		],
-		"args": [
-		  {
-			"name": "github",
-			"type": "bytes"
-		  }
-		]
-	  }
-	],
-	"accounts": [
-	  {
-		"name": "SolanaCohort5Account",
-		"discriminator": [
-		  167,
-		  81,
-		  85,
-		  136,
-		  32,
-		  169,
-		  137,
-		  77
-		]
-	  }
-	],
-	"errors": [
-	  {
-		"code": 6000,
-		"name": "InvalidGithubAccount",
-		"msg": "Invalid Github account"
-	  }
-	],
-	"types": [
-	  {
-		"name": "SolanaCohort5Account",
-		"type": {
-		  "kind": "struct",
-		  "fields": [
-			{
-			  "name": "github",
-			  "type": "bytes"
-			},
-			{
-			  "name": "key",
-			  "type": "pubkey"
-			}
-		  ]
-		}
-	  }
-	]
-  });
+	  });
